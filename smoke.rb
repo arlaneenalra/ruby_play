@@ -9,7 +9,7 @@ require 'sinatra'
 
 
 get '/' do
-  "Hello Nurse!"
+  "Hello World"
 end
 
 
