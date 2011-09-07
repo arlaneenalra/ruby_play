@@ -6,10 +6,11 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
+require 'haml'
 
 
 get '/' do
-  "Hello World testing Pushing 5"
+    haml :index
 end
 
 

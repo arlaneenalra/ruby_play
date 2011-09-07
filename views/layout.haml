@@ -1,0 +1,11 @@
+!!! 5
+%html
+    %head
+        %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'http://yui.yahooapis.com/3.4.0/build/cssreset/reset-min.css' }
+        %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'http://yui.yahooapis.com/3.4.0/build/cssbase/base-min.css' }
+        %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'http://yui.yahooapis.com/3.4.0/build/cssfonts/fonts-min.css' }
+        %link{ :rel => 'stylesheet', :type => 'text/css', :href => 'style.css' }
+        %title Tiny Comment Engine    
+    %body
+        .content
+            = yield
