@@ -13,4 +13,14 @@ get '/' do
     haml :index
 end
 
+post '/' do
+    @name = params[:name]
+    @email = params[:email]
+    @url = params[:website]
+    @comment = params[:comment]
+
+    haml :posted
+end
+
+
 
