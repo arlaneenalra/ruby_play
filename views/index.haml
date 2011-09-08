@@ -5,20 +5,20 @@
             %div
                 %label Name:
                 &= comment.name
-                %div
-                    %label Email:
-                    &= comment.email
-                %div
-                    %label Website:
-                    &= comment.url
-                %div
-                    %label{:class => 'full'} Comment:
-                    &= comment.comment
+            %div
+                %label Email:
+                &= comment.email
+            %div
+                %label Website:
+                &= comment.url
+            %div
+                %label{:class => 'full'} Comment:
+                &= comment.comment        
             %hr
-%a{ :href => 'comment'} Make a comment
+    %a{ :href => 'comment'} Make a comment
 
-%hr
+    %hr
 
-%a{ :href => 'reset'} Reset the Comment Store
+    %a{ :href => 'reset'} Reset the Comment Store
 
 

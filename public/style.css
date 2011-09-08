@@ -6,7 +6,9 @@ label { float:left; }
 .half { width: 100%; }
 .half input { width: 100%; }
 
-.comment_form { width: 95%; margin-right: auto; margin-left: auto;}
+.comment_form, .comment_list { width: 95%; margin-right: auto; margin-left: auto;}
 
 .comment_form_submit { float: right; }
+
+.comment label { float: none; }
 
