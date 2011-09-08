@@ -53,6 +53,8 @@ end
 get '/reset' do
     Sequel::Migrator.apply(DB, 'schema', 0)
     Sequel::Migrator.apply(DB, 'schema')
+
+    redirect '/'
 end
 
 
