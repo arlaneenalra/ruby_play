@@ -1,0 +1,17 @@
+
+# Modify this configuration file and copy it to config.rb
+
+configure do
+    set :environment, :development
+
+    # setup the database configuration
+    set :db_config, {
+        :adapter => 'sqlite',
+        :user => '',
+        :password => '',
+        :database => 'test.db',
+    }
+
+    
+end
+

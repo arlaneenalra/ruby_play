@@ -1,27 +1,20 @@
-.comment_form
-    %h1 Comment Form
-    %p Please be mindful of what you wish to say.  Cursing, malicious statements, and other annoyances will not be permitted.    
-    %form{ :action => '', :method => 'POST'}
-        .comment_form_header        
-            .full
-                %label Name:
-                %br
-                %input{ :name => 'name', :type => 'text' }
 
-            .full
-                %label Email:
-                %br
-                %input{ :name => 'email', :type => 'text' }
-            .full
-                %label
-                    Website:
-                %input{ :name => 'website', :type => 'text' }   
-        .comment_form_comment
-            %label
-                Comment:
-            %br
-            %textarea{ :class=> 'full', :name => 'comment', :rows => 5 }
-            
-        .comment_form_submit
-            %input{ :name => 'submit_button', :type => 'submit', :value => 'Post Comment' }
+.comment_list
+    - @comment_list.each do |comment|
+        .comment
+            %div
+                %label Name:
+                &= comment.name
+                %div
+                    %label Email:
+                    &= comment.email
+                %div
+                    %label Website:
+                    &= comment.url
+                %div
+                    %label{:class => 'full'} Comment:
+                    &= comment.comment
+            %hr
+%a{ :href => 'comment'} Make a comment
+
 
