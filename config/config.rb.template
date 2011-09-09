@@ -6,10 +6,11 @@ configure do
 
     # setup the database configuration
     set :db_config, {
-        :adapter => 'sqlite',
+        :adapter => 'mysql',
         :user => '',
         :password => '',
-        :database => 'test.db',
+        :host => '',
+        :database => 'test_db',
     }
 
     
