@@ -2,26 +2,30 @@
     %h1 Comment Form
     %p Please be mindful of what you wish to say.  Cursing, malicious statements, and other annoyances will not be permitted.
     %hr
+    
     %form{ :action => '', :method => 'POST'}
         .comment_form_header        
             .full
                 %label Name:
+                = render_errors(@comment, :name)
                 %br
-                %input{ :name => 'name', :type => 'text' }
+                %input{ :name => 'name', :type => 'text', :value => @comment.name }
 
             .full
                 %label Email:
+                = render_errors(@comment, :email)
                 %br
-                %input{ :name => 'email', :type => 'text' }
+                %input{ :name => 'email', :type => 'text', :value => @comment.email }
             .full
-                %label
-                    Website:
-                %input{ :name => 'website', :type => 'text' }   
+                %label Website:
+                = render_errors(@comment, :url)
+                %input{ :name => 'website', :type => 'text', :value => @comment.url }
         .comment_form_comment
-            %label
-                Comment:
+            %label Comment:
+            = render_errors(@comment, :comment)
             %br
-            %textarea{ :class=> 'full', :name => 'comment', :rows => 5 }
-            
+            %textarea{ :class=> 'full', :name => 'comment', :rows => 5}
+                &= @comment.comment
+        
         .comment_form_submit
             %input{ :name => 'submit_button', :type => 'submit', :value => 'Post Comment' }

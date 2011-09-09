@@ -12,3 +12,4 @@ label { float:left; }
 
 .comment label { float: none; }
 
+.comment_error { font-size: 0.75em; font-style: italic; color: red; }
