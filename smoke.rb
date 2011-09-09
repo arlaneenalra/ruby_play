@@ -8,8 +8,6 @@ require 'bundler/setup'
 require 'sinatra'
 require 'haml'
 require 'sequel'
-require 'pp'
-#require 'sequel/extensions/migration'
 
 # load the current configuration
 require 'config/config.rb'
@@ -25,31 +23,36 @@ Sequel::Migrator.apply(DB, 'schema')
 
 # load our database classes
 require 'tiny/db'
+require 'tiny/helpers'
 
+# display list of comments
 get '/' do
-    @comment_list = Comment.filter(:moderated => true, :deleted => false)
+    @comment_list = Comment.moderated
     
     haml :index
 end
 
+# Comment form
 get '/comment' do
     @comment = Comment.new
     haml :comment_form
 end
 
+# process posted comment form
 post '/comment' do
     @comment = Comment.new
 
     # construct a new comment object, naively
-    @comment.name = params[:name]
-    @comment.email = params[:email]
-    @comment.url = params[:website]
+    @comment.name = params[:name].strip
+    @comment.email = params[:email].strip
+    @comment.url = params[:website].strip
     @comment.comment = params[:comment]
     @comment.ip_address = request.ip
 
+    # attempt to save the new comment
     begin
+        # save and redirect
         @comment.save
-        #haml :posted
         redirect '/'
 
     rescue Sequel::ValidationFailed
@@ -58,6 +61,9 @@ post '/comment' do
     end
 end
 
+####
+## Remove these latter
+####
 
 # reset the database
 get '/reset' do
@@ -67,12 +73,15 @@ get '/reset' do
     redirect '/'
 end
 
-def render_errors(obj, sym)
-    @error = obj.errors.on(sym)
-    @error ||= []
-    pp @error
+# moderate all comments
+get '/mod' do
+    @comment_list = Comment.unmoderated
 
-    haml :error_partial
+    @comment_list.each do |comment|
+        comment.moderated = true
+        comment.save
+    end
+    
+    redirect '/'
 end
-
 

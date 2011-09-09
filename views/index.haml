@@ -4,10 +4,14 @@
         .comment
             %div
                 %label Name:
-                &= comment.name
-            %div
-                %label Email:
-                &= comment.email
+                - if comment.url != ''
+                    %a{ :href => comment.url }
+                        &= comment.name
+                - else
+                    &= comment.name
+            -# %div
+            -#     %label Email:
+            -#     &= comment.email
             %div
                 %label Website:
                 &= comment.url
